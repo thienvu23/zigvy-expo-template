@@ -1,1 +1,0 @@
-# zigvy-expo-template
