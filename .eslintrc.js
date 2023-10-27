@@ -1,6 +1,7 @@
 const path = require('path');
-console.log("__dirname", __dirname);
+
 module.exports = {
+  root: true,
   env: {
     es2021: true,
   },
@@ -16,6 +17,8 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react/jsx-runtime',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'universe/native',
+    // 'universe/shared/typescript-analysis',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -28,7 +31,6 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       rules: {
-        'prettier/prettier': ['error', { singleQuote: true }],
         'linebreak-style': ['error', 'unix'],
         quotes: ['error', 'single', { avoidEscape: true }],
         semi: ['error', 'always'],

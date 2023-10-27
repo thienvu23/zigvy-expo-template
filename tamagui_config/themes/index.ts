@@ -29,8 +29,8 @@ type Theme = {
   placeholderColor: string;
 };
 
-function t(a: any) {
-  let res: Record<string, string> = {};
+function t(a: number[][]) {
+  const res: Record<string, string> = {};
   for (const [ki, vi] of a) {
     res[ks[ki]] = vs[vi];
   }
@@ -39,7 +39,7 @@ function t(a: any) {
 const vs = [
   '#fff',
   '#f8f8f8',
-  'hsl(0, 0%, 96.3%)',
+  'pink',
   'hsl(0, 0%, 94.1%)',
   'hsl(0, 0%, 92.0%)',
   'hsl(0, 0%, 90.0%)',
@@ -173,7 +173,7 @@ const n1 = t([
   [27, 3],
 ]) as Theme;
 
-export const light = n1 as Theme;
+export const light = n1;
 const n2 = t([
   [0, 14],
   [1, 15],
@@ -205,7 +205,7 @@ const n2 = t([
   [27, 17],
 ]) as Theme;
 
-export const light_primary = n2 as Theme;
+export const light_primary = n2;
 const n3 = t([
   [0, 26],
   [1, 27],
@@ -237,7 +237,7 @@ const n3 = t([
   [27, 29],
 ]) as Theme;
 
-export const light_secondary = n3 as Theme;
+export const light_secondary = n3;
 const n4 = t([
   [0, 38],
   [1, 39],
@@ -269,7 +269,7 @@ const n4 = t([
   [27, 46],
 ]) as Theme;
 
-export const dark = n4 as Theme;
+export const dark = n4;
 const n5 = t([
   [0, 49],
   [1, 50],
@@ -301,7 +301,7 @@ const n5 = t([
   [27, 55],
 ]) as Theme;
 
-export const dark_primary = n5 as Theme;
+export const dark_primary = n5;
 const n6 = t([
   [0, 60],
   [1, 61],
@@ -333,4 +333,4 @@ const n6 = t([
   [27, 66],
 ]) as Theme;
 
-export const dark_secondary = n6 as Theme;
+export const dark_secondary = n6;

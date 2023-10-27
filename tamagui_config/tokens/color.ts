@@ -1,6 +1,7 @@
-import {addFixObjKeys} from './utils';
 import mapValues from 'lodash/mapValues';
- 
+
+import { addFixObjKeys } from './utils';
+
 const lightTransparent = 'rgba(255,255,255,0)';
 const darkTransparent = 'rgba(10,10,10,0)';
 const lightColor = 'hsl(0, 0%, 9.0%)';
@@ -122,22 +123,18 @@ export const lightColors = {
 };
 
 export const color = {
-  ...addFixObjKeys(lightColors, {postfix: 'Light'}),
-  ...addFixObjKeys(darkColors, {postfix: 'Dark'}),
+  ...addFixObjKeys(lightColors, { postfix: 'Light' }),
+  ...addFixObjKeys(darkColors, { postfix: 'Dark' }),
 };
 
 export const lightPalettes = {
   light: lightPalette,
-  ...mapValues(addFixObjKeys(colorTokens.light, {prefix: 'light_'}), (v: any) =>
-    Object.values<string>(v),
-  ),
+  ...mapValues(addFixObjKeys(colorTokens.light, { prefix: 'light_' }), (v: any) => Object.values<string>(v)),
 };
 
 export const darkPalettes = {
   dark: darkPalette,
-  ...mapValues(addFixObjKeys(colorTokens.dark, {prefix: 'dark_'}), (v: any) =>
-    Object.values<string>(v),
-  ),
+  ...mapValues(addFixObjKeys(colorTokens.dark, { prefix: 'dark_' }), (v: any) => Object.values<string>(v)),
 };
 
 export const palettesColorBuilder = {

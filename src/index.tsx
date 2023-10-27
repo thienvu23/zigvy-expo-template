@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { View } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
+import React, { useEffect } from 'react';
+import { Stack, Text } from 'tamagui';
 
 const AppRoot = () => {
   useEffect(() => {
@@ -9,7 +9,11 @@ const AppRoot = () => {
     }, 2000);
   }, []);
 
-  return <View style={{ flex: 1 }}></View>;
+  return (
+    <Stack f={1} bg="$background" mt="$h1" jc="center" ai="center">
+      <Text color="$color">123123</Text>
+    </Stack>
+  );
 };
 
 export default React.memo(AppRoot);

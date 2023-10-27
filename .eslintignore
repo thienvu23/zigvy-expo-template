@@ -3,3 +3,6 @@
 *.md
 
 scripts
+
+/.expo
+node_modules

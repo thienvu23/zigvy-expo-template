@@ -1,5 +1,5 @@
 module.exports = {
-  parser: "typescript",
+  parser: 'typescript',
   arrowParens: 'always',
   bracketSpacing: true,
   insertPragma: false,

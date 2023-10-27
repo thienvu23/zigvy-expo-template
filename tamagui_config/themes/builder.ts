@@ -1,18 +1,12 @@
-import {
-  PaletteDefinitions,
-  ThemeDefinitions,
-  createThemeBuilder,
-} from '@tamagui/theme-builder';
-import {palettesColorBuilder} from '../tokens/color';
+import { PaletteDefinitions, ThemeDefinitions, createThemeBuilder } from '@tamagui/theme-builder';
 import transform from 'lodash/transform';
+
+import { palettesColorBuilder } from '../tokens/color';
 
 const LIGHT_THEME_KEY = 'light';
 const DARK_THEME_KEY = 'dark';
 
-const themesByPalettes = transform<
-  PaletteDefinitions,
-  ThemeDefinitions<string>
->(
+const themesByPalettes = transform<PaletteDefinitions, ThemeDefinitions<string>>(
   palettesColorBuilder,
   (result, _, key) => {
     const isDark = (key as string).includes(DARK_THEME_KEY);
@@ -23,7 +17,6 @@ const themesByPalettes = transform<
   },
   {},
 );
-
 const defaultTheme = {
   color1: 1,
   color2: 2,

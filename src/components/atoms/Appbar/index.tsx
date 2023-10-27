@@ -1,8 +1,18 @@
+import { getSize } from '@tamagui/get-token';
 import React, { useContext, useMemo } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { getSize } from '@tamagui/get-token';
-import { Button, SizableText, SizeTokens, View, createStyledContext, useProps } from 'tamagui';
-import { XStack, styled, withStaticProperties } from 'tamagui';
+import {
+  Button,
+  SizableText,
+  SizeTokens,
+  View,
+  createStyledContext,
+  useProps,
+  XStack,
+  styled,
+  withStaticProperties,
+} from 'tamagui';
+
 import Icons from '../Icons';
 
 const APP_BAR_NAME = 'Appbar';

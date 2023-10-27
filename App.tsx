@@ -1,9 +1,5 @@
-import "dayjs.extend";
-import { StatusBar } from 'expo-status-bar';
-import { LogBox } from 'react-native';
-import AppRoot from '@/index'
-import * as SplashScreen from 'expo-splash-screen';
-import { FontFamilyName } from '@/themes/type';
+import './dayjs.extend';
+import './console';
 import {
   useFonts,
   Montserrat_400Regular,
@@ -14,9 +10,16 @@ import {
   Montserrat_600SemiBold,
 } from '@expo-google-fonts/montserrat';
 import { NavigationContainer } from '@react-navigation/native';
+import * as SplashScreen from 'expo-splash-screen';
+import { StatusBar } from 'expo-status-bar';
 import { Suspense } from 'react';
-import {TamaguiProvider} from 'tamagui';
+import { LogBox } from 'react-native';
+import { TamaguiProvider, Theme } from 'tamagui';
+
 import tamaguiConfig from './tamagui.config';
+
+import AppRoot from '@/index';
+import { FontFamilyName } from '@/themes/type';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -38,14 +41,15 @@ export default function App() {
 
   return (
     <TamaguiProvider config={tamaguiConfig}>
-    <NavigationContainer>
-      {/* if you want nice React 18 concurrent hydration, you'll want Suspense near the root */}
-      <Suspense>
-        <StatusBar style="auto" />
-        <AppRoot />
-      </Suspense>
-    </NavigationContainer>
+      <Theme name="primary">
+        <NavigationContainer>
+          {/* if you want nice React 18 concurrent hydration, you'll want Suspense near the root */}
+          <Suspense>
+            <StatusBar style="auto" />
+            <AppRoot />
+          </Suspense>
+        </NavigationContainer>
+      </Theme>
     </TamaguiProvider>
   );
 }
-
