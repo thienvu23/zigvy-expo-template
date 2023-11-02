@@ -129,12 +129,12 @@ export const color = {
 
 export const lightPalettes = {
   light: lightPalette,
-  ...mapValues(addFixObjKeys(colorTokens.light, { prefix: 'light_' }), (v: any) => Object.values<string>(v)),
+  ...mapValues(addFixObjKeys(colorTokens.light, { prefix: 'light_' }), (v) => Object.values<string>(v)),
 };
 
 export const darkPalettes = {
   dark: darkPalette,
-  ...mapValues(addFixObjKeys(colorTokens.dark, { prefix: 'dark_' }), (v: any) => Object.values<string>(v)),
+  ...mapValues(addFixObjKeys(colorTokens.dark, { prefix: 'dark_' }), (v) => Object.values<string>(v)),
 };
 
 export const palettesColorBuilder = {

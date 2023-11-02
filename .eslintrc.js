@@ -10,6 +10,7 @@ module.exports = {
     toast: 'readonly',
     PopupConfirmDefaultOption: 'readonly',
     GlobalToastType: 'readonly',
+    __dirname: 'readonly',
   },
   extends: [
     'eslint:recommended',
@@ -18,7 +19,7 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'universe/native',
-    // 'universe/shared/typescript-analysis',
+    'universe/shared/typescript-analysis',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {

@@ -1,8 +1,8 @@
-import { createFont, createTamagui } from 'tamagui'; // or '@tamagui/core'
 import { shorthands } from '@tamagui/shorthands';
-import { tokens, themes } from './tamagui_config';
 import { ms } from 'react-native-size-matters';
-import { getFontFamilies } from './tamagui_config/tokens/fonts';
+import { createFont, createTamagui } from 'tamagui'; // or '@tamagui/core'
+
+import { themes, tokens, getFontFamilies } from './tamagui_config';
 
 const defaultFontFamily = getFontFamilies();
 
@@ -20,6 +20,7 @@ const font = createFont({
     4: ms(10),
     5: ms(12),
     6: ms(14),
+    true: ms(14),
     7: ms(15),
     8: ms(18),
     9: ms(22),
@@ -32,6 +33,7 @@ const font = createFont({
     2: '200',
     3: '300',
     4: '400',
+    true: '400',
     5: '500',
     6: '600',
     7: '700',
@@ -93,6 +95,7 @@ type AppConfig = typeof config;
 // this will give you types for your components
 // note - if using your own design system, put the package name here instead of tamagui
 declare module 'tamagui' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface TamaguiCustomConfig extends AppConfig {}
 }
 

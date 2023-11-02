@@ -1,5 +1,5 @@
 import { getSize } from '@tamagui/get-token';
-import React, { useContext, useMemo } from 'react';
+import React, { ReactNode, useContext, useMemo } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   Button,
@@ -17,14 +17,20 @@ import Icons from '../Icons';
 
 const APP_BAR_NAME = 'Appbar';
 
-type AppbarContext = {
+/**
+ * @description Default padding horizontal for appbar
+ * @description The spacing auto add for action child first action(left) and last action(right)
+ */
+export const DEFAULT_SPACING_HORIZONTAL = '3';
+
+type AppbarContextType = {
   contentShouldCenter?: boolean;
   actionSize?: SizeTokens;
 };
 
-type AppbarProps = AppbarContext;
+type AppbarProps = AppbarContextType;
 
-export const AppbarContext = createStyledContext<Partial<AppbarContext>>({
+export const AppbarContext = createStyledContext<Partial<AppbarContextType>>({
   contentShouldCenter: false,
   actionSize: '$1.5',
 });
@@ -34,7 +40,7 @@ const AppbarFrame = styled(XStack, {
   tag: 'button',
   context: AppbarContext,
   height: '$9',
-  rowGap: '$2',
+  gap: '$1',
 
   variants: {
     unstyled: {
@@ -60,45 +66,66 @@ const AppbarComponent = AppbarFrame.styleable<AppbarProps>((props, ref) => {
 
   const actionSpacing = getSize(actionBtnSize).val;
 
-  const { leftActionCount, rightActionCount } = useMemo(() => {
+  const { leftActionCount, rightActionCount, newChildren } = useMemo(() => {
     let _leftActionCount = 0;
     let _rightActionCount = 0;
     let _hasAppbarContent = false;
-    const childrenArr = React.Children.toArray(props.children).filter(
+    const childrenArr = React.Children.toArray(props.children as ReactNode).filter(
       (child) => child != null && typeof child !== 'boolean',
     ) as React.ReactElement[];
 
-    childrenArr.forEach((child) => {
+    const _newChildren = childrenArr.map((child, index) => {
       if (child.type === AppbarContent) {
         _hasAppbarContent = true;
       } else if (_hasAppbarContent) {
         _rightActionCount += 1;
+        const isLastRight = index === childrenArr.length - 1;
+        // Auto remove spacing for action button
+        if (isLastRight) {
+          return React.cloneElement(child, {
+            marginRight: `$-${DEFAULT_SPACING_HORIZONTAL}`,
+          });
+        }
       } else {
         _leftActionCount += 1;
+        const isFirstLeft = index === 0;
+        // Auto remove spacing for action button
+        if (isFirstLeft) {
+          return React.cloneElement(child, {
+            marginLeft: `$-${DEFAULT_SPACING_HORIZONTAL}`,
+          });
+        }
       }
+
+      return child;
     });
 
     return {
       leftActionCount: _leftActionCount,
       rightActionCount: _rightActionCount,
       hasAppbarContent: _hasAppbarContent,
+      newChildren: _newChildren,
     };
   }, [props.children]);
 
   const leftSpacing = leftActionCount === 0 ? actionSpacing * rightActionCount : 0;
   const rightSpacing = rightActionCount === 0 ? actionSpacing * leftActionCount : 0;
 
-  const children = (
+  const childrenFinal = (
     <>
       <View width={leftSpacing} />
-      {props.children}
+      {newChildren}
       <View width={rightSpacing} />
     </>
   );
 
   return (
-    <AppbarFrame {...appBarProps} paddingTop={top} paddingHorizontal={Math.max(left, right) || '$3'} ref={ref}>
-      {children}
+    <AppbarFrame
+      {...appBarProps}
+      paddingTop={top}
+      paddingHorizontal={Math.max(left, right) || `$${DEFAULT_SPACING_HORIZONTAL}`}
+      ref={ref}>
+      {childrenFinal}
     </AppbarFrame>
   );
 });

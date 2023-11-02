@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="784.066pt" height="784.364pt" viewBox="0 0 784.066 784.364">
+<defs>
+<clipPath id="clip_0">
+<path transform="matrix(1,0,0,-1,0,784.364)" d="M0 784.364H784.066V0H0Z"/>
+</clipPath>
+<clipPath id="clip_1">
+<path transform="matrix(1,0,0,-1,0,784.364)" d="M86.5756 87.1437H701.56V703.126H86.5756Z"/>
+</clipPath>
+</defs>
+<g>
+<g id="layer_1" data-name="">
+<g clip-path="url(#clip_0)">
+<g>
+<g clip-path="url(#clip_1)">
+<path transform="matrix(1,0,0,-1,677.6676,673.0575)" d="M0 0V102.579H-251.596L0 354.567V492.826L-492.059 0ZM-566.443 567.327V464.748H-314.847L-566.443 212.76V74.502L-74.383 567.327ZM14.566 591.699-590.971-14.822-591.092-24.163-582.12-23.687 23.418 582.834 23.892 591.82Z"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg>

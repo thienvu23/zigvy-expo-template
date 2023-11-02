@@ -29,9 +29,10 @@ type Theme = {
   placeholderColor: string;
 };
 
-function t(a: number[][]) {
+function t(a) {
   const res: Record<string, string> = {};
   for (const [ki, vi] of a) {
+    // @ts-ignore
     res[ks[ki]] = vs[vi];
   }
   return res;
@@ -39,7 +40,7 @@ function t(a: number[][]) {
 const vs = [
   '#fff',
   '#f8f8f8',
-  'pink',
+  'hsl(0, 0%, 96.3%)',
   'hsl(0, 0%, 94.1%)',
   'hsl(0, 0%, 92.0%)',
   'hsl(0, 0%, 90.0%)',

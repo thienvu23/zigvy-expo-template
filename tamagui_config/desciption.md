@@ -1,0 +1,1 @@
+- Tamagui config for tamagui config json

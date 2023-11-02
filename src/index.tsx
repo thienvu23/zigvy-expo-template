@@ -1,18 +1,37 @@
-import * as SplashScreen from 'expo-splash-screen';
-import React, { useEffect } from 'react';
-import { Stack, Text } from 'tamagui';
+import {
+  NavigationContainer,
+  DarkTheme as NavigationDarkTheme,
+  DefaultTheme as NavigationDefaultTheme,
+} from '@react-navigation/native';
+import React, { Suspense } from 'react';
+import { TamaguiProvider, Theme } from 'tamagui';
+
+import useOneTimesFirst from './hooks/useOneTimesFirst';
+import { ThemeModeContext } from './themes';
+import { useAppSwitchThemeMode } from './themes/hooks/useAppSwitchThemeMode';
+import tamaguiConfig from '../tamagui.config';
+
+import RootNavigation from '@/navigation';
 
 const AppRoot = () => {
-  useEffect(() => {
-    setTimeout(() => {
-      SplashScreen.hideAsync();
-    }, 2000);
-  }, []);
+  const { ready } = useOneTimesFirst();
+  const themeHandler = useAppSwitchThemeMode();
+
+  if (themeHandler.loading || !ready) return null;
 
   return (
-    <Stack f={1} bg="$background" mt="$h1" jc="center" ai="center">
-      <Text color="$color">123123</Text>
-    </Stack>
+    <ThemeModeContext.Provider value={themeHandler}>
+      <TamaguiProvider config={tamaguiConfig} defaultTheme={themeHandler.mode || 'light'}>
+        <Theme name={themeHandler.mode}>
+          <NavigationContainer theme={themeHandler.mode === 'dark' ? NavigationDarkTheme : NavigationDefaultTheme}>
+            {/* if you want nice React 18 concurrent hydration, you'll want Suspense near the root */}
+            <Suspense>
+              <RootNavigation />
+            </Suspense>
+          </NavigationContainer>
+        </Theme>
+      </TamaguiProvider>
+    </ThemeModeContext.Provider>
   );
 };
 
