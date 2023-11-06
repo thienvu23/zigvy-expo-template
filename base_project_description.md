@@ -1,0 +1,65 @@
+Base Project Description
+- [UI Design Tamagui](https://tamagui.dev/docs/intro/introduction)
+  - https://blog.logrocket.com/tamagui-react-native-create-faster-design-systems/
+  - Common Component (atoms)
+    - Button
+    - Label
+    - Input
+    - Form Input (React-Hooks-Form)
+    - HelperText
+    - Checkbox
+    - Icons
+    - Modal
+    - PopupConfirm
+    - Toast
+    - List
+    - NoDataView
+    - Loading
+    - Select
+    - BottomSheetActions
+  - Theme
+    - [Tokens] https://tamagui.dev/docs/core/tokens, https://tamagui.dev/docs/intro/tokens
+    - [Colors]https://tamagui.dev/docs/intro/colors, https://tamagui.dev/docs/guides/theme-builder
+    - [Font](https://tamagui.dev/docs/core/font-language) 
+- Project Folder Structure [Ref](https://medium.com/@techwithmuskan/best-folder-structure-for-react-native-project-c6d7dd6dd494)
+  - assets
+    - images
+    - svg
+  - patches
+  - scripts
+  - src
+    - components
+      - atoms: The smallest possible components, such as buttons, titles, inputs or event color pallets, animations, and fonts can be stored in the atoms folder.
+        - EX: Button, Label, ...
+      - molecules: They are the composition of one or more components of atoms.
+        - EX: ProductItem, OrderItem, AddressForm, ...
+      - organisms: The combination of molecules that work together or even with atoms that compose more elaborate interfaces.
+        - ProductList, OrderSummary, CheckoutForm, ...
+      - template: The collection of organisms that will make a full-page template.
+        - EX: Header - Footer, ...
+    - config
+    - types
+    - hooks
+    - i18n
+    - navigation
+    - screens
+    - services
+    - stores
+    - themes
+    - helpers
+- Package
+  - tamagui
+  - splash-screen, app-icon
+  - react-native-svg, react-native-svg-transformer
+  - lodash
+  - dayjs
+  - axios
+  - react-native-animatable
+  - i18next, react-i18next
+  - react-native-code-push(update OTA, crash-report, ..), Expo(sentry-expo(crash-report), expo-updates(account-username))
+  - redux, @reduxjs/toolkit, react-redux, redux-persist, redux-persist-transform-filter
+- Other Function
+  - Husky, Eslint, Prettier
+  - Create Snippets template code
+  - Environment
+  - assets (font, ...)

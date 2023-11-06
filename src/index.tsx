@@ -3,27 +3,26 @@ import {
   DarkTheme as NavigationDarkTheme,
   DefaultTheme as NavigationDefaultTheme,
 } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
 import React, { Suspense } from 'react';
 import { TamaguiProvider, Theme } from 'tamagui';
 
 import useOneTimesFirst from './hooks/useOneTimesFirst';
-import { ThemeModeContext } from './themes';
-import { useAppSwitchThemeMode } from './themes/hooks/useAppSwitchThemeMode';
 import tamaguiConfig from '../tamagui.config';
 
 import RootNavigation from '@/navigation';
 
 const AppRoot = () => {
-  const { ready } = useOneTimesFirst();
-  const themeHandler = useAppSwitchThemeMode();
+  const { ready, themeMode } = useOneTimesFirst();
 
-  if (themeHandler.loading || !ready) return null;
+  if (!ready) return null;
 
   return (
-    <ThemeModeContext.Provider value={themeHandler}>
-      <TamaguiProvider config={tamaguiConfig} defaultTheme={themeHandler.mode || 'light'}>
-        <Theme name={themeHandler.mode}>
-          <NavigationContainer theme={themeHandler.mode === 'dark' ? NavigationDarkTheme : NavigationDefaultTheme}>
+    <>
+      <StatusBar style={themeMode} animated />
+      <TamaguiProvider config={tamaguiConfig} defaultTheme={themeMode}>
+        <Theme name={themeMode}>
+          <NavigationContainer theme={themeMode === 'dark' ? NavigationDarkTheme : NavigationDefaultTheme}>
             {/* if you want nice React 18 concurrent hydration, you'll want Suspense near the root */}
             <Suspense>
               <RootNavigation />
@@ -31,7 +30,7 @@ const AppRoot = () => {
           </NavigationContainer>
         </Theme>
       </TamaguiProvider>
-    </ThemeModeContext.Provider>
+    </>
   );
 };
 

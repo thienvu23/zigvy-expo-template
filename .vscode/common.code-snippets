@@ -1,0 +1,10 @@
+{
+	"useTranslate": {
+		"scope": "typescript,typescriptreact,javascript,javascriptreact",
+		"prefix": "utran",
+		"body": [
+			"const { t } = useTranslation();",
+		],
+		"description": "Create useTranslation"
+	}
+}

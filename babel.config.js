@@ -7,7 +7,6 @@ module.exports = function (api) {
     presets: ['babel-preset-expo'],
     plugins: [
       // optional, only if you ever use process.env
-      'transform-inline-environment-variables',
       // NOTE: this is optional, you don't *need* the compiler
       [
         '@tamagui/babel-plugin',

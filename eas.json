@@ -1,0 +1,74 @@
+{
+  "cli": {
+    "version": ">= 3.5.2",
+    "promptToConfigurePushNotifications": true
+  },
+  "build": {
+    "dev-si": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "extends": "staging",
+      "ios": {
+        "simulator": true
+      },
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "staging",
+        "EXPO_PUBLIC_PACKAGE_NAME_SUFFIX": "dev"
+      }
+    },
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "extends": "staging",
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "staging",
+        "EXPO_PUBLIC_PACKAGE_NAME_SUFFIX": "dev"
+      }
+    },
+    "zigvy": {
+      "distribution": "internal",
+      "channel": "zigvy",
+      "extends": "staging",
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "staging",
+        "EXPO_PUBLIC_PACKAGE_NAME_SUFFIX": "zigvy"
+      },
+      "ios": {
+        "enterpriseProvisioning": "adhoc"
+      }
+    },
+
+    "staging": {
+      "distribution": "internal",
+      "channel": "staging",
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "staging",
+        "EXPO_PUBLIC_PACKAGE_NAME_SUFFIX": "staging"
+      },
+      "ios": {
+        "enterpriseProvisioning": "adhoc"
+      }
+    },
+    "production-android-apk": {
+      "extends": "production",
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "production": {
+      "channel": "production",
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "production"
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "android": {
+        "track": "production"
+      },
+      "ios": {
+      }
+    }
+  }
+}

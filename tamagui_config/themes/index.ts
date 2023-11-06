@@ -29,10 +29,9 @@ type Theme = {
   placeholderColor: string;
 };
 
-function t(a) {
+function t(a: number[][]) {
   const res: Record<string, string> = {};
   for (const [ki, vi] of a) {
-    // @ts-ignore
     res[ks[ki]] = vs[vi];
   }
   return res;

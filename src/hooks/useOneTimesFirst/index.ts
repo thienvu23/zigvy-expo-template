@@ -10,7 +10,10 @@ import {
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
 
-import { FontFamilyName } from '@/themes/type';
+import useThemeMode from './useThemeMode';
+
+import { FontFamilyName } from '@/types/themes';
+import { useCheckOTAUpdate } from './useCheckOTAUpdate';
 
 const fonts = {
   [FontFamilyName.Montserrat]: Montserrat_400Regular,
@@ -24,6 +27,8 @@ const fonts = {
 export default () => {
   const [loadedFonts] = useFonts(fonts);
   const [ready, setReady] = useState(false);
+  const { themeMode } = useThemeMode();
+  const { updateOTAChecked } = useCheckOTAUpdate();
 
   useEffect(() => {
     setTimeout(() => {
@@ -32,12 +37,13 @@ export default () => {
   }, []);
 
   useEffect(() => {
-    if (loadedFonts) {
+    if (loadedFonts && updateOTAChecked) {
       setReady(true);
     }
-  }, [loadedFonts]);
+  }, [loadedFonts, updateOTAChecked]);
 
   return {
     ready,
+    themeMode,
   };
 };

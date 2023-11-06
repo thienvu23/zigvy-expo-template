@@ -9,7 +9,10 @@ export enum FontFamilyName {
   MontserratMedium = 'Montserrat-Medium',
 }
 
-export type ThemeMode = ColorSchemeName;
+/**
+ * @description default follow system theme if null
+ */
+export type ThemeMode = NonNullable<ColorSchemeName> | 'system';
 
 export type ThemeProviderType = {
   mode: ThemeMode;
